@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+@theme {
+  /* Cool Slate palette – Lanka Stayz design system */
+  --color-slate-950: #111827;
+  --color-slate-900: #1f2937;
+  --color-slate-700: #374151;
+  --color-slate-400: #9ca3af;
+  --color-slate-100: #f3f4f6;
+
+  /* Semantic tokens */
+  --color-background: #f3f4f6;
+  --color-foreground: #111827;
+  --color-card: #ffffff;
+  --color-card-foreground: #111827;
+  --color-primary: #1f2937;
+  --color-primary-foreground: #f3f4f6;
+  --color-secondary: #374151;
+  --color-secondary-foreground: #f3f4f6;
+  --color-muted: #f3f4f6;
+  --color-muted-foreground: #374151;
+  --color-accent: #1f2937;
+  --color-accent-foreground: #f3f4f6;
+  --color-border: #9ca3af;
+  --color-input: #9ca3af;
+  --color-ring: #1f2937;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #f3f4f6;
+
+  /* Typography */
+  --font-sans: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Playfair Display', 'Georgia', serif;
+
+  /* Border radius */
+  --radius: 0.5rem;
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
+}
+
+/* CSS variables for shadcn/ui compatibility */
+:root {
+  --background: 220 13% 96%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 217 33% 17%;
+  --primary-foreground: 220 13% 96%;
+  --secondary: 215 19% 35%;
+  --secondary-foreground: 220 13% 96%;
+  --muted: 220 13% 96%;
+  --muted-foreground: 215 19% 35%;
+  --accent: 217 33% 17%;
+  --accent-foreground: 220 13% 96%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 220 13% 96%;
+  --border: 220 9% 63%;
+  --input: 220 9% 63%;
+  --ring: 217 33% 17%;
+  --radius: 0.5rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #f3f4f6;
+  color: #111827;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Display serif font utility */
+.font-display {
+  font-family: 'Playfair Display', 'Georgia', serif;
+}
+
+/* Smooth transitions for interactive elements */
+a,
+button {
+  transition: all 0.2s ease;
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid #1f2937;
+  outline-offset: 2px;
+}
+
+/* Remove default button styles */
+button {
+  cursor: pointer;
+}
+
+/* Image quality */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
