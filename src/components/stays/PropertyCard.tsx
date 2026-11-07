@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
 import { MapPin, Users, ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 import type { Property } from '@/types/property.types'
 import { formatLKR } from '@/utils/currency'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { cardVariant } from '@/lib/motion'
 
 interface PropertyCardProps {
   property: Property
@@ -11,7 +13,15 @@ interface PropertyCardProps {
 
 export default function PropertyCard({ property }: PropertyCardProps) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-xl border border-[#9CA3AF]/20 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+    <motion.article
+      className="group flex flex-col overflow-hidden rounded-xl border border-[#9CA3AF]/20 bg-white shadow-sm"
+      variants={cardVariant}
+      whileHover={{
+        y: -4,
+        boxShadow: '0 12px 32px -8px rgba(0,0,0,0.12)',
+        transition: { duration: 0.25, ease: 'easeOut' },
+      }}
+    >
       {/* Image */}
       <Link
         to={`/stays/${property.id}`}
@@ -19,11 +29,13 @@ export default function PropertyCard({ property }: PropertyCardProps) {
         aria-label={`View details for ${property.name}`}
         tabIndex={-1}
       >
-        <img
+        <motion.img
           src={property.images[0]}
           alt={`${property.name} — ${property.type} in ${property.location}, Sri Lanka`}
-          className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="h-full w-full object-cover"
           loading="lazy"
+          whileHover={{ scale: 1.06 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         />
         {/* Type badge */}
         <div className="absolute top-3 left-3">
@@ -72,14 +84,16 @@ export default function PropertyCard({ property }: PropertyCardProps) {
             </span>
             <span className="text-xs text-[#374151] ml-1">/ night</span>
           </div>
-          <Button asChild size="sm" className="gap-1.5 shrink-0">
-            <Link to={`/stays/${property.id}`}>
-              View Details
-              <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-            </Link>
-          </Button>
+          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+            <Button asChild size="sm" className="gap-1.5 shrink-0">
+              <Link to={`/stays/${property.id}`}>
+                View Details
+                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </Link>
+            </Button>
+          </motion.div>
         </div>
       </div>
-    </article>
+    </motion.article>
   )
 }

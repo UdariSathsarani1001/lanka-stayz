@@ -1,7 +1,9 @@
 import { MapPin } from 'lucide-react'
+import { motion } from 'framer-motion'
 import type { Property } from '@/types/property.types'
 import PropertyCard from './PropertyCard'
 import { Button } from '@/components/ui/button'
+import { staggerContainer, fadeUp } from '@/lib/motion'
 
 interface PropertyGridProps {
   properties: Property[]
@@ -16,7 +18,12 @@ export default function PropertyGrid({
 }: PropertyGridProps) {
   if (properties.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-24 text-center">
+      <motion.div
+        className="flex flex-col items-center justify-center py-24 text-center"
+        variants={fadeUp}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#F3F4F6] mb-6">
           <MapPin className="h-7 w-7 text-[#9CA3AF]" aria-hidden="true" />
         </div>
@@ -32,17 +39,23 @@ export default function PropertyGrid({
             Show all properties
           </Button>
         )}
-      </div>
+      </motion.div>
     )
   }
 
   return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list">
+    <motion.div
+      className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+      role="list"
+      variants={staggerContainer}
+      initial="hidden"
+      animate="visible"
+    >
       {properties.map((property) => (
         <div key={property.id} role="listitem">
           <PropertyCard property={property} />
         </div>
       ))}
-    </div>
+    </motion.div>
   )
 }

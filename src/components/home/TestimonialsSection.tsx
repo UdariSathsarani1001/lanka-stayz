@@ -1,4 +1,6 @@
 import { Star } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { fadeUp, staggerContainer, cardVariant } from '@/lib/motion'
 
 const testimonials = [
   {
@@ -49,7 +51,13 @@ export default function TestimonialsSection() {
     <section className="py-20 bg-[#111827]" aria-labelledby="testimonials-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-12 text-center">
+        <motion.div
+          className="mb-12 text-center"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+        >
           <p className="text-xs font-semibold uppercase tracking-widest text-[#9CA3AF] mb-2">
             Guest Stories
           </p>
@@ -59,33 +67,38 @@ export default function TestimonialsSection() {
           <p className="mt-3 text-[#9CA3AF] max-w-lg mx-auto">
             Real experiences from guests who discovered their perfect Sri Lankan stay through Lanka Stayz.
           </p>
-        </div>
+        </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <motion.div
+          className="grid grid-cols-1 gap-6 md:grid-cols-3"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+        >
           {testimonials.map((t) => (
-            <figure
+            <motion.figure
               key={t.name}
               className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
+              variants={cardVariant}
+              whileHover={{
+                y: -4,
+                backgroundColor: 'rgba(255,255,255,0.08)',
+                transition: { duration: 0.25 },
+              }}
             >
-              {/* Stars */}
               <div className="mb-4">
                 <StarRating rating={t.rating} />
               </div>
-
-              {/* Quote */}
               <blockquote className="flex-1 mb-6">
                 <p className="text-[#F3F4F6]/80 leading-relaxed text-sm">
                   "{t.quote}"
                 </p>
               </blockquote>
-
-              {/* Property stayed */}
               <p className="text-xs text-[#9CA3AF] mb-4">
                 Stayed at: <span className="text-[#F3F4F6]">{t.property}</span>
               </p>
-
-              {/* Author */}
               <figcaption className="flex items-center gap-3 border-t border-white/10 pt-4">
                 <img
                   src={t.avatar}
@@ -98,9 +111,9 @@ export default function TestimonialsSection() {
                   <p className="text-xs text-[#9CA3AF]">{t.location}</p>
                 </div>
               </figcaption>
-            </figure>
+            </motion.figure>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

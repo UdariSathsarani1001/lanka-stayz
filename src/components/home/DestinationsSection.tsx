@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { fadeUp, staggerContainer, cardVariant } from '@/lib/motion'
 
 const destinations = [
   {
@@ -44,7 +46,14 @@ export default function DestinationsSection() {
   return (
     <section className="py-20 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-12">
+        {/* Header */}
+        <motion.div
+          className="mb-12"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+        >
           <p className="text-xs font-semibold uppercase tracking-widest text-[#374151] mb-2">
             Where Will You Go?
           </p>
@@ -55,34 +64,50 @@ export default function DestinationsSection() {
             Sri Lanka packs extraordinary diversity into a small island. Pick a region and
             find your perfect stay.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3">
+        {/* Destination cards grid */}
+        <motion.div
+          className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+        >
           {destinations.map((dest) => (
-            <Link
-              key={dest.name}
-              to={`/stays?destination=${dest.filter}`}
-              className="group relative overflow-hidden rounded-xl aspect-[4/3] block"
-            >
-              <img
-                src={dest.image}
-                alt={`${dest.name}, Sri Lanka — ${dest.tagline}`}
-                className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
-                <div>
-                  <h3 className="font-display text-base font-bold text-white leading-tight">
-                    {dest.name}
-                  </h3>
-                  <p className="text-xs text-white/75 mt-0.5">{dest.tagline}</p>
+            <motion.div key={dest.name} variants={cardVariant}>
+              <Link
+                to={`/stays?destination=${dest.filter}`}
+                className="group relative overflow-hidden rounded-xl aspect-[4/3] block"
+              >
+                <motion.img
+                  src={dest.image}
+                  alt={`${dest.name}, Sri Lanka — ${dest.tagline}`}
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                  whileHover={{ scale: 1.07 }}
+                  transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+                  <div>
+                    <h3 className="font-display text-base font-bold text-white leading-tight">
+                      {dest.name}
+                    </h3>
+                    <p className="text-xs text-white/75 mt-0.5">{dest.tagline}</p>
+                  </div>
+                  <motion.div
+                    className="text-white/70"
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </motion.div>
                 </div>
-                <ArrowRight className="h-4 w-4 text-white/70 group-hover:text-white group-hover:translate-x-1 transition-all" aria-hidden="true" />
-              </div>
-            </Link>
+              </Link>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

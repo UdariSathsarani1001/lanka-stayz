@@ -1,10 +1,12 @@
 import { useParams, useSearchParams, Link } from 'react-router-dom'
 import { ArrowLeft, MapPin } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { getPropertyById } from '@/data/properties'
 import BookingForm from '@/components/booking/BookingForm'
 import { formatLKR } from '@/utils/currency'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { fadeUp, staggerContainer } from '@/lib/motion'
 
 export default function BookingPage() {
   const { id } = useParams<{ id: string }>()
@@ -66,9 +68,17 @@ export default function BookingPage() {
         </div>
 
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
-          {/* Booking form */}
-          <div className="lg:col-span-2">
-            <div className="rounded-2xl bg-white border border-[#9CA3AF]/20 shadow-sm p-6 sm:p-8">
+          {/* Booking form — animated entrance */}
+          <motion.div
+            className="lg:col-span-2"
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div
+              className="rounded-2xl bg-white border border-[#9CA3AF]/20 shadow-sm p-6 sm:p-8"
+              variants={fadeUp}
+            >
               <h2 className="font-display text-xl font-bold text-[#111827] mb-6">
                 Your Details
               </h2>
@@ -78,14 +88,20 @@ export default function BookingPage() {
                 initialCheckOut={checkOut}
                 initialGuests={guests}
               />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Sidebar — desktop only */}
           <aside aria-label="Property summary" className="hidden lg:block">
-            <div className="sticky top-24">
+            <motion.div
+              className="sticky top-24"
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.15 }}
+            >
               <PropertySummaryCard property={property} />
-            </div>
+            </motion.div>
           </aside>
         </div>
       </div>
