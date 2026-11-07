@@ -275,6 +275,9 @@ export default function GalleryRing() {
                 zIndex: Math.round(normalizedZ * 100),
                 willChange: 'transform, opacity',
                 backfaceVisibility: 'hidden',
+                overflow: 'hidden',
+                borderRadius: '0.75rem',
+                flexShrink: 0,
               }}
             >
               <GalleryCard
