@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 
 export default function FeaturedStays() {
   return (
-    <section id="featured" className="py-20 bg-[#F3F4F6]">
+    <section id="featured" className="relative z-10 py-20 bg-[#F3F4F6]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
