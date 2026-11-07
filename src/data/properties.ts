@@ -150,7 +150,7 @@ export const properties: Property[] = [
     images: [
       'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1200&q=80',
       'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1200&q=80',
-      'https://images.unsplash.com/photo-1540541338537-1220059af20b?w=1200&q=80',
+      'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1200&q=80',
     ],
     amenities: [
       'Wi-Fi',

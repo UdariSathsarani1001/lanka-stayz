@@ -44,14 +44,14 @@ export const galleryImages: GalleryImage[] = [
   },
   {
     id: 'g6',
-    src: 'https://images.unsplash.com/photo-1578895122474-6e503dc32bc8?w=800&q=85',
+    src: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=800&q=85',
     alt: 'Serene lakeside accommodation with lush tropical gardens in Kandy',
     caption: 'Lake View Retreat',
     location: 'Kandy',
   },
   {
     id: 'g7',
-    src: 'https://images.unsplash.com/photo-1540541338537-1220059af20b?w=800&q=85',
+    src: 'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800&q=85',
     alt: 'Tropical pool villa surrounded by palm trees and ocean views',
     caption: 'Tropical Pool Villa',
     location: 'South Coast',

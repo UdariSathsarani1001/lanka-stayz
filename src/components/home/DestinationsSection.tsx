@@ -7,13 +7,13 @@ const destinations = [
   {
     name: 'Mirissa',
     tagline: 'Beaches & Whale Watching',
-    image: 'https://images.unsplash.com/photo-1590123715493-4cfe0b2a9e80?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=800&q=80',
     filter: 'Mirissa',
   },
   {
     name: 'Ella',
     tagline: 'Tea Estates & Mountain Trails',
-    image: 'https://images.unsplash.com/photo-1572971756467-e84c96fd7dc6?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800&q=80',
     filter: 'Ella',
   },
   {
@@ -31,7 +31,7 @@ const destinations = [
   {
     name: 'Kandy',
     tagline: 'Ancient Temples & Lush Valleys',
-    image: 'https://images.unsplash.com/photo-1578895122474-6e503dc32bc8?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=800&q=80',
     filter: 'Kandy',
   },
   {
